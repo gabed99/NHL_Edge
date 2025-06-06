@@ -54,9 +54,10 @@ def fetch_json(url, filename, headers):
 
 def parse_filename_from_url(url):
 # Extract a filename from NHL JSON
+# YYYY02GGGG_evNNN.json - YYYY = 2024, GGGG = 0001-1312, NNN = event number
     parsed = urlparse(url)
     parts = parsed.path.strip("/").split("/")
-    return f"{parts[1]}_{parts[2]}" if len(parts) >= 3 else "unknown_file.json"
+    return f"{parts[2]}_{parts[3]}" if len(parts) >= 3 else "unknown_file.json"
 
 def main():
     # minimum headers to get Edge data
